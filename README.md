@@ -8,7 +8,7 @@ go get -u github.com/tigerwill90/muxmut
 ````
 
 ### Usage
-````
+````go
 mux := http.NewServeMux()
 mux.HandleFunc("/foo/bar", func(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("/foo/bar"))
