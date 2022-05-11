@@ -1,10 +1,10 @@
-# MutMux - A lock free http.Handler hot updater
+# MutH - A thread safe, lock free, http.Handler hot updater
 
 Note that this not make the underlying http.Handler implementation thread safe!
 
 **Install**
 ````
-go get -u github.com/tigerwill90/muxmut
+go get -u github.com/tigerwill90/muth
 ````
 
 ### Usage
@@ -14,9 +14,9 @@ mux.HandleFunc("/foo/bar", func(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("/foo/bar"))
 })
 
-mtx := mutmux.New(mux)
+h := muth.Handler(mux)
 srv := &http.Server{
-    Handler: mtx,
+    Handler: h,
 }
 _ = srv.ListenAndServe()
 
@@ -25,7 +25,7 @@ mux := http.NewServeMux()
 r.HandleFunc("/foo/bar/baz", func(w http.ResponseWriter, r *http.Request) {
     w.Write([]byte("/foo/bar/baz"))
 })
-mtx.Update(r)
+h.Update(r)
 ````
 
 
