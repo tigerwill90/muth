@@ -6,7 +6,7 @@ import (
 	"unsafe"
 )
 
-var _ http.Handler = (*MutH)(nil)
+var _ http.Handler = (*MutH[http.Handler])(nil)
 
 type MutH[T http.Handler] struct {
 	p *unsafe.Pointer
