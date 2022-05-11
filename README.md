@@ -1,4 +1,4 @@
-# MuxMut - A lock free http.Handler hot updater
+# MutMux - A lock free http.Handler hot updater
 
 Note that this not make the underlying http.Handler implementation thread safe!
 
